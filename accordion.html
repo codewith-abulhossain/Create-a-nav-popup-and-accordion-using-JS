@@ -8,9 +8,11 @@
 
   <body>
     <style>
-      header {
+      body {
         max-width: 900px;
         margin: auto;
+      }
+      header {
         background-color: cadetblue;
         padding: 3rem;
       }
@@ -25,6 +27,52 @@
         margin-right: 2rem;
         color: white;
       }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 70vh;
+      }
+      .accordion {
+        max-width: 700px;
+        margin: auto;
+        background-color: black;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        color: white;
+        height: 70px;
+        overflow: hidden;
+      }
+      .accordion-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+      }
+      .open {
+        width: 40px;
+        color: white;
+        cursor: pointer;
+        transition: all 0.5s ease;
+      }
+      .open:hover {
+        transform: rotate(133deg);
+        color: red;
+      }
+      .accordion-content {
+        margin-top: 40px;
+        border: 1px solid white;
+        padding: 1rem;
+        border-radius: 1rem;
+      }
+      .close {
+        width: 30px;
+        display: inline-block;
+        height: 3px;
+        background-color: white;
+        display: none;
+        cursor: pointer;
+      }
     </style>
     <header>
       <nav>
@@ -35,8 +83,59 @@
     </header>
     <main>
       <section>
-        <h1>Create a nav, popup, and accordion using JS.</h1>
+        <h1 style="text-align: center; font-size: 3rem">
+          Create a accordion using JS.
+        </h1>
+      </section>
+      <section class="container">
+        <div class="accordion">
+          <div class="accordion-title">
+            <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h2>
+            <div class="open-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="open"
+              >
+                <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+              </svg>
+              <span class="close"></span>
+            </div>
+          </div>
+          <div class="accordion-content">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti,
+              temporibus?
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
+              repellendus hic deserunt consequuntur harum? Eveniet.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
+              beatae!
+            </p>
+          </div>
+        </div>
       </section>
     </main>
+    <script>
+      const openIcon = document.getElementsByClassName("open");
+      const closeIcon = document.getElementsByClassName("close");
+      const accordion = document.getElementsByClassName("accordion");
+
+      openIcon[0].addEventListener("click", () => {
+        accordion[0].style.height = "auto";
+        openIcon[0].style.display = "none";
+        closeIcon[0].style.display = "inline-block";
+      });
+
+      closeIcon[0].addEventListener("click", () => {
+        accordion[0].style.height = "70px";
+        openIcon[0].style.display = "inline-block";
+        closeIcon[0].style.display = "none";
+      });
+    </script>
   </body>
 </html>
